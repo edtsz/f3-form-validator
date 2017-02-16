@@ -3,7 +3,7 @@
     "homepage": "https://github.com/edtsz/f3-form-validator",
     "keywords": ["form","validation","validator"],
     "description": "Form validator for FatFreeFramework based on CodeIgniter Form Validation library",
-    "license": "MIT",
+    "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Éderson Tiago Szlachta",
