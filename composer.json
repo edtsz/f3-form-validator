@@ -1,0 +1,21 @@
+{
+    "name": "edtsz/f3-form-validator",
+    "homepage": "https://github.com/edtsz/f3-form-validator",
+    "keywords": ["form","validation","validator"],
+    "description": "Form validator for FatFreeFramework based on CodeIgniter Form Validation library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Éderson Tiago Szlachta",
+            "email": "ederson.szlachta@gmail.com",
+            "homepage": "https://agiliza.rs",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0"
+    },
+    "autoload": {
+        "files": ["src/validator.php"]
+    }
+}
