@@ -1991,31 +1991,37 @@ class Validator
 	/**
 	 * Interface to use native `hash` function
 	 *
-	 * Usage: 'hash[hash name]'
+	 * Usage: 'hash[hash,raw]'
 	 *  - available hashing algorithms:
 	 *    http://php.net/manual/en/function.hash-algos.php
+	 *  - raw: default is false, any value given will be set as true
 	 *
 	 * @link http://php.net/manual/en/function.hash.php
 	 *
 	 * @param string $str
-	 * @param string $hash
+	 * @param string $param
 	 *
-	 * @return mixed string hash || bool false
+	 * @return mixed string or binary hash || bool false
 	 */
-	public function hash($str, $hash)
+	public function hash($str, $param)
 	{
+		// bypass for $param without comma
+		$param .= ',';
+
+		list($hash, $raw) = explode(',', $param);
+
 		if ( ! in_array($hash, hash_algos()) )
 		{
 			return FALSE;
 		}
 
-		return hash($hash, $str);
+		return hash($hash, $str, !!$raw);
 	}
 
 	// --------------------------------------------------------------------
 
 	/**
-	 * Check if the string have
+	 * Check if the string have, at least, the word number given.
 	 *
 	 * Usage: 'min_words[int]'
 	 *
@@ -2034,7 +2040,7 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 * Check if the string have
+	 * Check if the string have, at most, the word number given.
 	 *
 	 * Usage: 'max_words[int]'
 	 *
