@@ -43,6 +43,8 @@ return [
 		'validator_file_min_size'         => 'The {field} field must be a file bigger than {param}KB.',
 		'validator_file_max_size'         => 'The {field} field must be a file smaller than {param}KB.',
 		'validator_file_types'            => 'The {field} field must be a file like these: {param}.',
+		'validator_min_words'             => 'The {field} field must be at least {param} words in length.',
+		'validator_max_words'             => 'The {field} field cannot exceed {param} words in length.',
 
 		'upload_err_ini_size'             => 'The uploaded file exceeds the upload_max_filesize directive in php.ini.',
 		'upload_err_form_size'            => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.',

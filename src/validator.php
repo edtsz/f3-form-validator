@@ -1621,11 +1621,11 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 *
-	 * undocumented function
-	 *
-	 * @return bool
+	 * Check if the input is a valid file
 	 * @author Éderson Tiago Szlachta <ederson.szlachta@gmail.com>
+	 *
+	 * @param file $file
+	 * @return bool
 	 **/
 	public function is_file($file)
 	{
@@ -1658,13 +1658,17 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 *
-	 * undocumented function
-	 *
-	 * Size: 1 == 1024 bytes
-	 *
-	 * @return bool
+	 * Check if the file is bigger then given value
 	 * @author Éderson Tiago Szlachta <ederson.szlachta@gmail.com>
+	 *
+	 * Usage: file_min_size[size]
+	 *  - size in MebiBytes (MiB): 1 == 1024 bytes
+	 *
+	 * @link https://en.wikipedia.org/wiki/ISO/IEC_80000
+	 *
+	 * @param file $file
+	 * @param int  $size
+	 * @return bool
 	 **/
 	public function file_min_size($file, $size)
 	{
@@ -1679,13 +1683,17 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 *
-	 * undocumented function
-	 *
-	 * Size: 1 == 1024 bytes
-	 *
-	 * @return bool
+	 * Check if the file is smaller then given value
 	 * @author Éderson Tiago Szlachta <ederson.szlachta@gmail.com>
+	 *
+	 * Usage: file_max_size[size]
+	 *  - size in MebiBytes (MiB): 1 == 1024 bytes
+	 *
+	 * @link https://en.wikipedia.org/wiki/ISO/IEC_80000
+	 *
+	 * @param file $file
+	 * @param int  $size
+	 * @return bool
 	 **/
 	public function file_max_size($file, $size)
 	{
@@ -1700,11 +1708,14 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
+	 * Determine if the input contains one of the given filetype extensions
 	 *
-	 * undocumented function
-	 *
-	 * @return bool
 	 * @author Éderson Tiago Szlachta <ederson.szlachta@gmail.com>
+	 *
+	 * Usage: file_types[extensions]
+	 *  - extensions can be single o a list separeted by comma
+	 *
+	 * @return mixed file || bool false
 	 **/
 	public function file_types($file, $exts)
 	{
@@ -1753,9 +1764,10 @@ class Validator
 	/**
 	 * Determine if the provided input is a valid CPF.
 	 *
-	 * Usage: '<index>' => 'valid_cpf'
+	 * Usage: 'valid_cpf'
+	 *  - can be with or without mask
 	 *
-	 * @param string $input date ('Y-m-d')
+	 * @param string $str
 	 *
 	 * @return bool
 	 */
@@ -1789,7 +1801,7 @@ class Validator
 	/**
 	 * Determine if the provided input is a valid date (ISO 8601).
 	 *
-	 * Usage: '<index>' => 'valid_date'
+	 * Usage: 'valid_date'
 	 *
 	 * @param string $input date ('Y-m-d')
 	 *
@@ -1805,9 +1817,9 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 * Determine if the provided input is a valid date (ISO 8601).
+	 * Determine if the provided input is a valid date and time (ISO 8601).
 	 *
-	 * Usage: '<index>' => 'valid_datetime'
+	 * Usage: 'valid_datetime'
 	 *
 	 * @param string $str date('Y-m-d H:i:s')
 	 *
@@ -1825,7 +1837,7 @@ class Validator
 	/**
 	 * Determine if the provided input is a valid time (ISO 8601).
 	 *
-	 * Usage: '<index>' => 'valid_time'
+	 * Usage: 'valid_time'
 	 *
 	 * @param string $str date('H:i:s')
 	 *
@@ -1843,12 +1855,12 @@ class Validator
 	/**
 	 * Determine if the provided input meets age requirement (ISO 8601).
 	 *
-	 * Usage: '<index>' => 'min_age[13]'
+	 * Usage: 'min_age[int]'
 	 *
 	 * @param string $str date('Y-m-d') or date('Y-m-d H:i:s')
-	 * @param string $min int
+	 * @param int    $min age in years
 	 *
-	 * @return mixed
+	 * @return bool
 	 */
 	public function min_age($str, $min)
 	{
@@ -1871,12 +1883,12 @@ class Validator
 	/**
 	 * Determine if the provided input meets age requirement (ISO 8601).
 	 *
-	 * Usage: '<index>' => 'max_age[13]'
+	 * Usage: 'max_age[int]'
 	 *
 	 * @param string $str date('Y-m-d') or date('Y-m-d H:i:s')
-	 * @param string $max int
+	 * @param int    $max age in years
 	 *
-	 * @return mixed
+	 * @return bool
 	 */
 	public function max_age($str, $max)
 	{
@@ -1899,8 +1911,8 @@ class Validator
 	/**
 	 * Determine if the input is a valid human name [Credits to http://github.com/ben-s].
 	 *
-	 * See: https://github.com/Wixel/GUMP/issues/5
-	 * Usage: '<index>' => 'valid_name'
+	 * @link https://github.com/Wixel/GUMP/issues/5
+	 * Usage: 'valid_name'
 	 *
 	 * @param string $str
 	 *
@@ -1916,7 +1928,14 @@ class Validator
 	/**
 	 * Convert case of strings
 	 *
-	 * Usage: 'convert[UPPER]|convert[LOWER]|convert[TITLE]'
+	 * Usage: 'convert[case]'
+	 *  - option should be in upper case
+	 *  - available options
+	 *    UPPER => To upper case
+	 *    LOWER => To lower case
+	 *    TITLE => Just first letter of each word in upper
+	 *
+	 * @link http://php.net/manual/en/function.mb-convert-case.php
 	 *
 	 * @param string $str
 	 * @param array  $case
@@ -1944,9 +1963,13 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
-	 * Interface to use `substr`
+	 * Interface to use native `substr` function
 	 *
-	 * @param string $field
+	 * Usage: 'substr[start,length]'
+	 *  - both params are integer
+	 *  - second param is not mandatory
+	 *
+	 * @param string $str
 	 * @param string $params
 	 *
 	 * @return string
@@ -1959,6 +1982,71 @@ class Validator
 			$params[1] = 1;
 		}
 
+		// better mb_substr instead substr
 		return mb_substr($str, $params[0], $params[1]);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Interface to use native `hash` function
+	 *
+	 * Usage: 'hash[hash name]'
+	 *  - available hashing algorithms:
+	 *    http://php.net/manual/en/function.hash-algos.php
+	 *
+	 * @link http://php.net/manual/en/function.hash.php
+	 *
+	 * @param string $str
+	 * @param string $hash
+	 *
+	 * @return mixed string hash || bool false
+	 */
+	public function hash($str, $hash)
+	{
+		if ( ! in_array($hash, hash_algos()) )
+		{
+			return FALSE;
+		}
+
+		return hash($hash, $str);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Check if the string have
+	 *
+	 * Usage: 'min_words[int]'
+	 *
+	 * @param string $str
+	 * @param int    $counter
+	 *
+	 * @return bool
+	 */
+	public function min_words($str, $counter)
+	{
+		$str   = preg_replace('/\s+/', ' ', trim($str));
+		$words = explode(" ", $str);
+		return count($words) >= $counter;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Check if the string have
+	 *
+	 * Usage: 'max_words[int]'
+	 *
+	 * @param string $str
+	 * @param int    $counter
+	 *
+	 * @return bool
+	 */
+	public function max_words($str, $counter)
+	{
+		$str   = preg_replace('/\s+/', ' ', trim($str));
+		$words = explode(" ", $str);
+		return count($words) <= $counter;
 	}
 } // END class \Validator

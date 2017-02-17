@@ -43,6 +43,8 @@ return [
 		'validator_file_min_size'         => 'O campo {field} deve conter um arquivo maior que {param}KB.',
 		'validator_file_max_size'         => 'O campo {field} deve conter um arquivo menor que {param}KB.',
 		'validator_file_types'            => 'O campo {field} deve conter um arquivo do tipo: {param}.',
+		'validator_min_words'             => 'O campo {field} deve conter pelo menos {param} palavras.',
+		'validator_max_words'             => 'O campo {field} deve conter no máximo {param} palavras.',
 
 		'upload_err_ini_size'             => 'O arquivo enviado excedeu o limite definido na diretiva upload_max_filesize do php.ini.',
 		'upload_err_form_size'            => 'O arquivo enviado excedeu o limite definido na diretiva MAX_FILE_SIZE que foi definida no formulário HTML.',
