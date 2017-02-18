@@ -18,7 +18,7 @@ return [
 		'validator_max_age'               => 'A idade máxima aceitável é {param}.',
 		'validator_min_length'            => 'O campo {field} deve ter pelo menos {param} caractere(s).',
 		'validator_max_length'            => 'O campo {field} ultrapassou o limite de {param} caractere(s).',
-		'validator_exact_length'          => 'O campo {field} não pode exceder {param} caractere(s).',
+		'validator_exact_length'          => 'O campo {field} deve conter exatamente {param} caractere(s).',
 		'validator_alpha'                 => 'O campo {field} deve conter somente letras.',
 		'validator_alpha_numeric'         => 'O campo {field} deve conter somente letras e números.',
 		'validator_alpha_numeric_spaces'  => 'O campo {field} deve conter somente letras, números e espaços.',
