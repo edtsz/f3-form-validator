@@ -949,6 +949,24 @@ class Validator
 	// --------------------------------------------------------------------
 
 	/**
+	 * Get POST array back, with data filtered and prepped
+	 *
+	 * @return	array
+	 */
+	public function get_all()
+	{
+		$data = [];
+
+		foreach ($this->_field_data as $field => $properties) {
+			$data[$field] = $properties['postdata'];
+		}
+
+		return $data;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Set Select
 	 *
 	 * Enables pull-down lists to be set to the value the user
